@@ -53,7 +53,7 @@ spec:
     - name: https
       port: {{ coalesce .Values.service.ports.https .Values.service.httpsPort }}
       protocol: TCP
-      targetPort: http
+      targetPort: https
       {{- if (and (or (eq .Values.service.type "NodePort") (eq .Values.service.type "LoadBalancer")) (not (empty .Values.service.nodePorts.https))) }}
       nodePort: {{ .Values.service.nodePorts.https }}
       {{- else if eq .Values.service.type "ClusterIP" }}
